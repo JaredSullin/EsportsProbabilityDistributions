@@ -1,0 +1,221 @@
+---
+title: "R Notebook"
+author: Jared Sullin
+output: html_notebook
+---
+
+## Dataset from 
+## https://www.kaggle.com/rankirsh/esports-earnings/notebooks
+
+```{r}
+EsportsEarnings <- read.csv("GeneralEsportData.csv")
+EsportsEarnings
+
+```
+
+## Histogram 1
+
+1. what is the total number of Total Tournaments thought the years
+```{r}
+
+ggplot( EsportsEarnings, aes(x=  ReleaseDate, fill =TotalTournaments, color = Genre))+
+  geom_histogram()+
+  theme(, axis.text.x = element_text(angle = 45))+
+   labs(title = "TotalTournaments Distribution through the years",
+       subtitle = "Source: Kaggle",
+       x = "TotalTournaments",
+       y= "Frequency" )
+
+```
+
+
+This graph shows that there are a is a massive fan base for fighting games in torments.
+
+```{r}
+median(EsportsEarnings$TotalTournaments)
+```
+
+
+```{r}
+mean(EsportsEarnings$TotalTournaments)
+```
+
+
+```{r}
+sd(EsportsEarnings$TotalTournaments)
+```
+```{r}
+
+
+ a <- EsportsEarnings$TotalTournaments
+  
+  max(a) - min(a)
+```
+
+
+#Mean:  82.22461
+
+#Median:  5
+
+#Standard Deviation: 420.0819
+
+#Range: 6061
+
+
+#Skew: Right
+
+
+## Histogram 2
+
+2. What annual amount is most common for Esports Players to earn?
+
+```{r}
+ggplot(data = EsportsEarnings, mapping = aes(x = TotalEarnings
+/100000)) + 
+  geom_histogram(color = "black", fill = "Green", show.legend = FALSE) +
+  geom_vline(aes(xintercept = mean(TotalEarnings
+/100000)), color = "red4", linetype = "dashed") +
+  labs(title = "TotalEarnings Distribution Players",
+       subtitle = "Source: Kaggle",
+       x = "TotalEarnings (Hundred thousands $)",
+       y= "Frequency")
+```
+as we can see from the graph it is either that the total earnings are fairly low for Esports players and do not usually make over one hundred thousand dollars. and the median price range is 37952.83 dollars and eighty three cents.
+
+
+```{r}
+median(EsportsEarnings$TotalEarnings)
+```
+
+
+```{r}
+mean(EsportsEarnings$TotalEarnings)
+```
+
+
+```{r}
+sd(EsportsEarnings$TotalEarnings)
+```
+
+```{r}
+
+
+ a <- EsportsEarnings$TotalEarnings
+  
+  max(a) - min(a)
+```
+
+#Mean: 1781337
+
+#Median:  37952.83
+
+#Standard Deviation: 12816626
+
+#Range: 229321217
+
+#Skew: Left
+
+
+## Histogram 3
+
+
+3. What is Online Earnings Distribution Players thought the years
+
+
+```{r}
+
+bg<- ggplot(EsportsEarnings, aes(x= Genre, y =  OnlineEarnings, fill = Genre))+
+  theme(legend.position = "none", axis.text.x = element_text(angle = 90, vjust = 1, hjust=1))+
+  geom_col(stat = "count")+
+  labs(y= "OnlineEarnings (in Millions)", title = "Online Earnings per Genre", subtitle = "1980 - 2020")
+
+
+bg + coord_flip()
+```
+
+
+as we can see battle royales make the most thought the years or mabey because there was a big boom of them in the past ten years and is very profitable.
+
+
+```{r}
+median(EsportsEarnings$OnlineEarnings)
+```
+
+
+```{r}
+mean(EsportsEarnings$OnlineEarnings)
+```
+
+
+```{r}
+sd(EsportsEarnings$OnlineEarnings)
+```
+
+```{r}
+
+
+ z<- EsportsEarnings$OnlineEarnings
+  
+  max(z) - min(z)
+```
+
+#Mean: 380569.7
+
+#Median: 20
+
+#Standard Deviation: 3076339
+
+#Range: 57238295
+
+#Skew: Right
+
+
+## Histogram 4
+
+4. what are genre are most players playing thought the years 
+
+```{r}
+ggplot( EsportsEarnings, aes(y =TotalPlayers, fill =Genre, color = Genre))+
+  geom_histogram()+
+  theme(, axis.text.x = element_text(angle = 45))+
+   labs(title = "TotalPlayers Genre 1980- 2020",
+       subtitle = "Source: Kaggle",
+       x = "TotalPlayers",
+       y= "Frequency" )
+
+```
+
+the most favorite game as we can see is third person shooters this is very likely with all of the call of duty games and other shooters
+
+
+```{r}
+median(EsportsEarnings$TotalPlayers)
+```
+
+
+```{r}
+mean(EsportsEarnings$TotalPlayers)
+```
+
+
+```{r}
+sd(EsportsEarnings$TotalPlayers)
+```
+
+```{r}
+
+
+ z<- EsportsEarnings$TotalPlayers
+  
+  max(z) - min(z)
+```
+
+#Mean: 190.2852
+
+#Median: 20.5
+
+#Standard Deviation: 807.4907
+
+#Range: 13358
+
+#Skew: Left
